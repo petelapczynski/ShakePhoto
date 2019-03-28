@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="petelap.shakephoto.ShowCaptureActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:id="@+id/imageCaptured"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="25dp">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/button"
+                android:layout_width="@dimen/progressFab_dimen"
+                android:layout_height="@dimen/progressFab_dimen"
+                android:layout_gravity="center"
+                android:alpha=".5"
+                app:backgroundTint="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/btnText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:elevation="14dp"
+                android:text="@string/photo_Shake"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/white" />
+
+            <petelap.shakephoto.CircleProgressBar
+                android:id="@+id/custom_progressBar"
+                android:layout_width="@dimen/progressBar_dimen"
+                android:layout_height="@dimen/progressBar_dimen"
+                android:layout_gravity="center"
+                app:progress="100"
+                app:progressBarThickness="10dp" />
+
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/btnNavSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_margin="20dp"
+            android:background="@android:color/transparent"
+            android:visibility="gone"
+            app:srcCompat="@android:drawable/ic_menu_manage" />
+
+        <ImageButton
+            android:id="@+id/btnNavMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:layout_margin="20dp"
+            android:background="@android:color/transparent"
+            android:visibility="gone"
+            app:srcCompat="@android:drawable/ic_delete" />
+
+    </FrameLayout>
+
+</FrameLayout>

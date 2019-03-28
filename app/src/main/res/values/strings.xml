@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Shake Photo</string>
+    <string name="action_main">Main</string>
+    <string name="action_settings">Settings</string>
+    <string name="photo_Take">Take Photo</string>
+    <string name="photo_Shake">Shake Photo</string>
+    <string name="photo_Save">Save Photo</string>
+    <string name="about_version_Summary">Build 2019–03–27</string>
+    <string name="about_version_Title">App Version</string>
+    <string name="gravity_Title">Gravity threshold</string>
+    <string name="shake_Title">Time between shake events</string>
+    <string name="reset_Title">Time reset with no shake activity</string>
+    <string name="countdown_Title">Countdown Time</string>
+    <string name="btnSave">Save Settings</string>
+    <string name="btnReset">Reset Defaults</string>
+    <string name="gravity_start_text">0.0</string>
+    <string name="gravity_end_text">5.0</string>
+    <string name="shake_start_text">0 ms</string>
+    <string name="shake_end_text">500 ms</string>
+    <string name="reset_start_text">0 ms</string>
+    <string name="reset_end_text">2000 ms</string>
+    <string name="countdown_start_text">0 ms</string>
+    <string name="countdown_end_text">5000 ms</string>
+</resources>
