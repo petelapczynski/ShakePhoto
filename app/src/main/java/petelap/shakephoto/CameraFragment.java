@@ -30,12 +30,11 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
     private int previewRotation;
     private Camera.PictureCallback jpegCallback;
 
-    SurfaceView mSurfaceView;
-    SurfaceHolder mSurfaceHolder;
+    private SurfaceView mSurfaceView;
+    private SurfaceHolder mSurfaceHolder;
 
     public static CameraFragment newInstance(){
-        CameraFragment fragment = new CameraFragment();
-        return fragment;
+        return new CameraFragment();
     }
 
     @Override
@@ -53,11 +52,6 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
         jpegCallback = new Camera.PictureCallback() {
             @Override
             public void onPictureTaken(byte[] data, Camera camera) {
-                /* // Save captured image to file
-                Bitmap picture = rotate(BitmapFactory.decodeByteArray(data, 0, data.length));
-                String fileLocation = SaveImageToStorage(picture);
-                */
-
                 // Save captured image to variable
                 CapturedPhotoManager.setImage( rotate(BitmapFactory.decodeByteArray(data, 0, data.length)) );
 
@@ -124,25 +118,10 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
 
     }
 
-    /* public String SaveImageToStorage(Bitmap bitmap){
-        String fileName = "imageToSend";
-        try{
-            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 80, bytes);
-            FileOutputStream fo = getContext().openFileOutput(fileName, Context.MODE_PRIVATE);
-            fo.write(bytes.toByteArray());
-            fo.close();
-        }catch(Exception e){
-            e.printStackTrace();
-            fileName = null;
-        }
-        return fileName;
-    } */
-
     private Bitmap rotate(Bitmap decodedBitmap) {
         int w = decodedBitmap.getWidth();
         int h = decodedBitmap.getHeight();
-        // TODO camera is not always 90 degrees
+
         Matrix matrix = new Matrix();
         matrix.setRotate(90);
 

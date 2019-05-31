@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="petelap.shakephoto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="petelap.shakephoto">
+
     <!-- Allows access to the accelerometer -->
     <uses-feature
         android:name="android.hardware.sensor.accelerometer"
-        android:required="true" /> <!-- Allows access to the camera -->
+        android:required="true" />
+
+    <!-- Allows access to the camera -->
     <uses-permission android:name="android.permission.CAMERA" />
 
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="true" />
-    <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- Allows access to external storage -->
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-feature android:name="android.hardware.camera2.full" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <!-- Allows access to external storage -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application

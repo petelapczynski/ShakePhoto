@@ -55,6 +55,7 @@
             android:layout_gravity="top|end"
             android:layout_margin="20dp"
             android:background="@android:color/transparent"
+            android:contentDescription="@string/action_settings"
             app:srcCompat="@android:drawable/ic_menu_manage" />
 
         <ImageButton
@@ -64,6 +65,7 @@
             android:layout_gravity="top|start"
             android:layout_margin="20dp"
             android:background="@android:color/transparent"
+            android:contentDescription="@string/switch_camera"
             app:srcCompat="@android:drawable/ic_menu_camera" />
 
     </FrameLayout>

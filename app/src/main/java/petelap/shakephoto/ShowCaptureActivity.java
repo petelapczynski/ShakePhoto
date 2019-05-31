@@ -129,17 +129,6 @@ public class ShowCaptureActivity extends AppCompatActivity {
         // Set brightness
         brightness = 240;
 
-        /*
-        // Handle captured image to file
-        try {
-            pictureImage = BitmapFactory.decodeStream(getApplication().openFileInput("imageToSend"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            finish();
-            return;
-        }
-        */
-
         // Handle captured image to variable
         pictureImage = CapturedPhotoManager.getImage();
         displayImage = overlay(pictureImage);

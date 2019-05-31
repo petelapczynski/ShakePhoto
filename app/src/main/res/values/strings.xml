@@ -5,7 +5,7 @@
     <string name="photo_Take">Take Photo</string>
     <string name="photo_Shake">Shake Photo</string>
     <string name="photo_Save">Save Photo</string>
-    <string name="about_version_Summary">Build 2019–03–27</string>
+    <string name="about_version_Summary">Build 2019–05–30</string>
     <string name="about_version_Title">App Version</string>
     <string name="gravity_Title">Gravity threshold</string>
     <string name="shake_Title">Time between shake events</string>
@@ -21,4 +21,6 @@
     <string name="reset_end_text">2000 ms</string>
     <string name="countdown_start_text">0 ms</string>
     <string name="countdown_end_text">5000 ms</string>
+    <string name="switch_camera">Switch camera</string>
+    <string name="start_preview">Start Preview</string>
 </resources>

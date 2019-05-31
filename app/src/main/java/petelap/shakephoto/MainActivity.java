@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -23,7 +24,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
-    FragmentPagerAdapter adapterViewPager;
+    private FragmentPagerAdapter adapterViewPager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (requestCode) {
             case 1:
                 // If request is cancelled, the result arrays are empty.
@@ -126,8 +127,13 @@ public class MainActivity extends AppCompatActivity {
             switch (position) {
                 case 0:
                     // Camera Fragment
-                    return CameraFragment.newInstance();
-                //case 1:
+                    if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ) {
+                        return Camera2Fragment.newInstance();
+                    } else {
+                        return CameraFragment.newInstance();
+                    }
+
+                case 1:
                     // Other Fragment
             }
             return null;
