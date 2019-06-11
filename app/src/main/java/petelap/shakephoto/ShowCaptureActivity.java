@@ -214,15 +214,20 @@ public class ShowCaptureActivity extends AppCompatActivity {
     }
 
     private boolean SaveImage(Bitmap finalBitmap) {
-        String root = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString();
-        File myDir = new File(root + "/Shake Photo");
-        myDir.mkdirs();
-        String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmm").format(new Date());
-        String fname = "img_"+ timeStamp +".jpg";
-        File file = new File (myDir, fname);
-        if (file.exists ()) file.delete ();
+        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() + "/Shake Photo");
+        // Create the storage directory if it does not exist
+        if (!mediaStorageDir.exists()) {
+            if (!mediaStorageDir.mkdirs()) {
+                return false;
+            }
+        }
+
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String mediaFileName = "img_"+ timeStamp +".jpg";
+        File mediaFile = new File (mediaStorageDir, mediaFileName);
+        if (mediaFile.exists ()) mediaFile.delete ();
         try {
-            FileOutputStream out = new FileOutputStream(file);
+            FileOutputStream out = new FileOutputStream(mediaFile);
             finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
             out.flush();
             out.close();
@@ -232,7 +237,7 @@ public class ShowCaptureActivity extends AppCompatActivity {
             return false;
         }
         // Update media scanner
-        MediaScannerConnection.scanFile(this, new String[]{file.toString()}, null,
+        MediaScannerConnection.scanFile(this, new String[]{mediaFile.toString()}, null,
             new MediaScannerConnection.OnScanCompletedListener() {
                 public void onScanCompleted(String path, Uri uri) {
                     // scan complete

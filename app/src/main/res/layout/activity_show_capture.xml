@@ -71,7 +71,7 @@
             android:background="@android:color/transparent"
             android:contentDescription="@string/action_main"
             android:visibility="gone"
-            app:srcCompat="@android:drawable/ic_delete" />
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
     </FrameLayout>
 
