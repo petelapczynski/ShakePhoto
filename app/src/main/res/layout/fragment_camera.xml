@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent">
+    android:background="@color/black">
 
     <SurfaceView
         android:layout_width="match_parent"
@@ -56,7 +56,7 @@
             android:layout_margin="20dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/action_settings"
-            app:srcCompat="@android:drawable/ic_menu_manage" />
+            app:srcCompat="@drawable/twotone_settings_applications_white_36" />
 
         <ImageButton
             android:id="@+id/btnSwitchCamera"
@@ -66,7 +66,7 @@
             android:layout_margin="20dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/switch_camera"
-            app:srcCompat="@android:drawable/ic_menu_camera" />
+            app:srcCompat="@drawable/twotone_switch_camera_white_36" />
 
     </FrameLayout>
 

@@ -5,7 +5,7 @@
     <string name="photo_Take">Take Photo</string>
     <string name="photo_Shake">Shake Photo</string>
     <string name="photo_Save">Save Photo</string>
-    <string name="about_version_Summary">Build 2019–05–30</string>
+    <string name="about_version_Summary">Build 2019–06–24</string>
     <string name="about_version_Title">App Version</string>
     <string name="gravity_Title">Gravity threshold</string>
     <string name="shake_Title">Time between shake events</string>

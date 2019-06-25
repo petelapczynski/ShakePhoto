@@ -59,8 +59,8 @@
             android:layout_margin="20dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/action_settings"
-            android:visibility="gone"
-            app:srcCompat="@android:drawable/ic_menu_manage" />
+            android:src="@drawable/twotone_settings_applications_white_36"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/btnNavMain"
@@ -71,7 +71,7 @@
             android:background="@android:color/transparent"
             android:contentDescription="@string/action_main"
             android:visibility="gone"
-            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+            app:srcCompat="@drawable/twotone_cancel_white_36" />
 
     </FrameLayout>
 

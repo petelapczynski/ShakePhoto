@@ -6,6 +6,7 @@ public class CapturedPhotoManager {
     private static Bitmap image;
     private static int cameraID;
     private static String cameraIDs;
+    private static boolean forwardFacingLens;
 
     public static Bitmap getImage() { return image; }
 
@@ -24,5 +25,9 @@ public class CapturedPhotoManager {
     public static String getCameraIDs() { return cameraIDs; }
 
     public static void setCameraIDs(String camID) { cameraIDs = camID; }
+
+    public static boolean isForwardFacingLens() { return forwardFacingLens; }
+
+    public static void setforwardFacingLens(boolean facingForward) { forwardFacingLens = facingForward; }
 
 }

@@ -4,12 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/progress_gray">
+    android:background="@color/black">
 
-    <TextureView
+    <petelap.shakephoto.AutoFitTextureView
         android:id="@+id/textureView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -50,6 +51,7 @@
 
         <ImageButton
             android:id="@+id/btnNavSettings"
+            style="@style/Widget.AppCompat.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top|end"
@@ -57,10 +59,22 @@
             android:layout_marginEnd="20dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/action_settings"
-            app:srcCompat="@android:drawable/ic_menu_manage" />
+            app:srcCompat="@drawable/twotone_settings_applications_white_36" />
+
+        <!--<ImageButton-->
+            <!--android:id="@+id/btnRes"-->
+            <!--style="@style/Widget.AppCompat.ImageButton"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="top|center"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:background="@android:color/transparent"-->
+            <!--android:contentDescription="@string/action_settings"-->
+            <!--app:srcCompat="@drawable/twotone_photo_size_select_actual_white_36" />-->
 
         <ImageButton
             android:id="@+id/btnSwitchCamera"
+            style="@style/Widget.AppCompat.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top|start"
@@ -68,7 +82,7 @@
             android:layout_marginTop="20dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/switch_camera"
-            app:srcCompat="@android:drawable/ic_menu_camera" />
+            app:srcCompat="@drawable/twotone_switch_camera_white_36" />
 
     </FrameLayout>
 

@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
-import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -15,7 +14,6 @@ import android.widget.ImageButton;
 public class Camera2Fragment extends Fragment implements SurfaceHolder.Callback {
 
     private CameraControllerV2WithPreview ccv2WithPreview;
-    private TextureView textureView;
     private static final String TAG = "Camera2Fragment";
 
     public static Camera2Fragment newInstance() {
@@ -25,7 +23,7 @@ public class Camera2Fragment extends Fragment implements SurfaceHolder.Callback 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_camera2, container, false);
-        textureView = view.findViewById(R.id.textureView);
+        AutoFitTextureView textureView = view.findViewById(R.id.textureView);
         assert textureView != null;
 
         // set default camera
@@ -54,6 +52,14 @@ public class Camera2Fragment extends Fragment implements SurfaceHolder.Callback 
             }
         });
 
+        //ImageButton btnRes = view.findViewById(R.id.btnRes);
+        //btnRes.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //        ccv2WithPreview.switchResolution();
+        //    }
+        //});
+
         ccv2WithPreview = new CameraControllerV2WithPreview(getActivity(), textureView);
 
         FloatingActionButton fab = view.findViewById(R.id.button);
@@ -61,7 +67,7 @@ public class Camera2Fragment extends Fragment implements SurfaceHolder.Callback 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //captureImage();
+                // Capture Image
                 ccv2WithPreview.takePicture();
             }
         });

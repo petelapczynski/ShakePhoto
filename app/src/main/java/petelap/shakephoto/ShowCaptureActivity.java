@@ -73,7 +73,7 @@ public class ShowCaptureActivity extends AppCompatActivity {
                 String bTxt = btnText.getText().toString();
                 if (bTxt.equals("Save Photo")) {
                     if (SaveImage(displayImage)) {
-                        Toast.makeText(ShowCaptureActivity.this, "Photo Saved",Toast.LENGTH_LONG).show();
+                        Toast.makeText(ShowCaptureActivity.this, "Photo Saved",Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(ShowCaptureActivity.this, "Error Saving Photo",Toast.LENGTH_LONG).show();
                     }
