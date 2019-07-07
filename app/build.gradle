@@ -17,7 +17,7 @@ android {
         applicationId "petelap.shakephoto"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 1
+        versionCode 3
         versionName "BetaRelease"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.config

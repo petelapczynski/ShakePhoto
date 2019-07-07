@@ -129,84 +129,88 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
     }
 
     private void captureImage() {
-        mCamera.takePicture(null, null, jpegCallback);
+        if (mCamera != null) {
+            mCamera.takePicture(null, null, jpegCallback);
+        }
     }
 
     private void startCameraPreview(SurfaceHolder holder) {
         // get camera
         mCamera = Camera.open(mCameraId);
-        // get camera parameters
-        Camera.Parameters parameters = mCamera.getParameters();
-        // set framerate
-       List<int[]> frameRates = parameters.getSupportedPreviewFpsRange();
-       int[] frameRate = null;
-        for (int i = 0; i < frameRates.size(); i++) {
-            if (frameRates.get(i)[1] > 1000 && frameRates.get(i)[1] <= 30000)  {
-                frameRate = frameRates.get(i);
+        if (mCamera != null) {
+            // get camera parameters
+            Camera.Parameters parameters = mCamera.getParameters();
+            // set framerate
+            List<int[]> frameRates = parameters.getSupportedPreviewFpsRange();
+            int[] frameRate = null;
+            for (int i = 0; i < frameRates.size(); i++) {
+                if (frameRates.get(i)[1] > 1000 && frameRates.get(i)[1] <= 30000)  {
+                    frameRate = frameRates.get(i);
+                }
             }
-        }
-        parameters.setPreviewFpsRange(frameRate[0], frameRate[1]);
+            parameters.setPreviewFpsRange(frameRate[0], frameRate[1]);
 
-        // set focus mode
-        List<String> focusModes = parameters.getSupportedFocusModes();
-        String focusMode = focusModes.get(0);
-        for (int i = 0; i < focusModes.size(); i++) {
-            if (focusModes.get(i).equals(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
-                focusMode = focusModes.get(i);
+            // set focus mode
+            List<String> focusModes = parameters.getSupportedFocusModes();
+            String focusMode = focusModes.get(0);
+            for (int i = 0; i < focusModes.size(); i++) {
+                if (focusModes.get(i).equals(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
+                    focusMode = focusModes.get(i);
+                }
             }
-        }
-        parameters.setFocusMode(focusMode);
+            parameters.setFocusMode(focusMode);
 
-        // set preview size
-        Camera.Size bestSize;
-        List<Camera.Size> sizeList = mCamera.getParameters().getSupportedPreviewSizes();
-        bestSize = sizeList.get(0);
-        for (int i = 1; i < sizeList.size(); i++) {
-            if ((sizeList.get(i).width * sizeList.get(i).height) > (bestSize.width * bestSize.height)) {
-                bestSize = sizeList.get(i);
+            // set preview size
+            Camera.Size bestSize;
+            List<Camera.Size> sizeList = mCamera.getParameters().getSupportedPreviewSizes();
+            bestSize = sizeList.get(0);
+            for (int i = 1; i < sizeList.size(); i++) {
+                if ((sizeList.get(i).width * sizeList.get(i).height) > (bestSize.width * bestSize.height)) {
+                    bestSize = sizeList.get(i);
+                }
             }
+            parameters.setPreviewSize(bestSize.width, bestSize.height);
+
+            mCamera.setParameters(parameters);
+
+            Camera.CameraInfo info = new Camera.CameraInfo();
+            Camera.getCameraInfo(mCameraId, info);
+
+            int rotation = getActivity().getWindowManager().getDefaultDisplay().getRotation();
+            int degrees = 0;
+            switch (rotation) {
+                case Surface.ROTATION_0:
+                    degrees = 0;
+                    break;
+                case Surface.ROTATION_90:
+                    degrees = 90;
+                    break;
+                case Surface.ROTATION_180:
+                    degrees = 180;
+                    break;
+                case Surface.ROTATION_270:
+                    degrees = 270;
+                    break;
+            }
+
+            if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+                // compensate the mirror
+                previewRotation = (info.orientation + degrees) % 360;
+                previewRotation = (360 - previewRotation) % 360;
+            } else {
+                // back-facing
+                previewRotation = (info.orientation - degrees + 360) % 360;
+            }
+            mCamera.setDisplayOrientation(previewRotation);
+
+            // set preview
+            try {
+                mCamera.setPreviewDisplay(holder);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            mCamera.startPreview();
         }
-        parameters.setPreviewSize(bestSize.width, bestSize.height);
-
-        mCamera.setParameters(parameters);
-
-        Camera.CameraInfo info = new Camera.CameraInfo();
-        Camera.getCameraInfo(mCameraId, info);
-
-        int rotation = getActivity().getWindowManager().getDefaultDisplay().getRotation();
-        int degrees = 0;
-        switch (rotation) {
-            case Surface.ROTATION_0:
-                degrees = 0;
-                break;
-            case Surface.ROTATION_90:
-                degrees = 90;
-                break;
-            case Surface.ROTATION_180:
-                degrees = 180;
-                break;
-            case Surface.ROTATION_270:
-                degrees = 270;
-                break;
-        }
-
-        if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
-            // compensate the mirror
-            previewRotation = (info.orientation + degrees) % 360;
-            previewRotation = (360 - previewRotation) % 360;
-        } else {
-            // back-facing
-            previewRotation = (info.orientation - degrees + 360) % 360;
-        }
-        mCamera.setDisplayOrientation(previewRotation);
-
-        // set preview
-        try {
-            mCamera.setPreviewDisplay(holder);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        mCamera.startPreview();
     }
 
     private void stopCameraPreview() {
