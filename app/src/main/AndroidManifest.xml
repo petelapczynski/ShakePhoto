@@ -47,7 +47,7 @@
         </activity>
 
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="petelap.shakephoto.MainActivity.provider"
             android:exported="false"
             android:grantUriPermissions="true">

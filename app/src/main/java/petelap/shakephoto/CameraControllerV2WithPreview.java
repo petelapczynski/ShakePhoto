@@ -27,14 +27,15 @@ import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.ImageReader;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.util.Size;
 import android.util.SparseIntArray;
 import android.view.OrientationEventListener;
 import android.view.Surface;
 import android.view.TextureView;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -403,12 +404,10 @@ public class CameraControllerV2WithPreview {
 
                 return;
             }
-        } catch (CameraAccessException e) {
+        } catch (CameraAccessException | NullPointerException e) {
             e.printStackTrace();
-        } catch (NullPointerException e) {
-            // Currently an NPE is thrown when the Camera2API is used but not supported on the device this code runs.
-            e.printStackTrace();
-        }
+        } // Currently an NPE is thrown when the Camera2API is used but not supported on the device this code runs.
+
     }
 
 
